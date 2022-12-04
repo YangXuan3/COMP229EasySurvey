@@ -1,0 +1,58 @@
+<div class="bg-primary p-2 text-white" [class.bg-warning]="editing"
+     [class.text-dark]="editing">
+    <h5>{{editing  ? "Edit" : "Create"}} Survey</h5>
+</div>
+<form novalidate #form="ngForm" (ngSubmit)="save(form)">
+    <div class="form-group">
+        <label>Title</label>
+        <input class="form-control" name="title" [(ngModel)]="survey.title" />
+    </div>
+    <div class="form-group">
+        <label>Type</label>
+        <input class="form-control" name="type" [(ngModel)]="survey.type" />
+    </div>
+    <div class="form-group">
+        <label>Start Date</label>
+        <input class="form-control"  type="datetime-local"name="startdate" [(ngModel)]="survey.startdate" />
+    </div>
+    <div class="form-group">
+        <label>End Date</label>
+        <input class="form-control"  type="datetime-local"name="enddate" [(ngModel)]="survey.enddate" />
+    </div>
+    <div class="form-group">
+        <label>Question 1</label>
+        <textarea class="form-control" name="q1"
+                  [(ngModel)]="survey.q1">
+        </textarea>
+    </div>
+    <div class="form-group">
+        <label>Question 2</label>
+        <textarea class="form-control" name="q2"
+                  [(ngModel)]="survey.q2">
+        </textarea>
+    </div>
+    <div class="form-group">
+        <label>Question 3</label>
+        <textarea class="form-control" name="q3"
+                  [(ngModel)]="survey.q3">
+        </textarea>
+    </div>
+    <div class="form-group">
+        <label>Question 4</label>
+        <textarea class="form-control" name="q4"
+                  [(ngModel)]="survey.q4">
+        </textarea>
+    </div>
+    <div class="form-group">
+        <label>Question 5</label>
+        <textarea class="form-control" name="q5"
+                  [(ngModel)]="survey.q5">
+        </textarea>
+    </div>
+    <button type="submit" class="btn btn-primary m-1" [class.btn-warning]="editing">
+        {{editing ? "Save" : "Create"}}
+    </button>
+    <button type="reset" class="btn btn-secondary" routerLink="/admin/main/surveys">
+        Cancel
+    </button>
+</form>

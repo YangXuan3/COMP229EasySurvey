@@ -1,0 +1,31 @@
+<div class="form-check">
+    <label class="form-check-label">
+    <input type="checkbox" class="form-check-input" [(ngModel)]="includeConfirmed"/>
+        Display Finished Answers
+    </label>
+</div>
+<table class="table table-sm">
+    <thead>
+        <tr><th>Name</th><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th><th>Q5</th><th colspan="2">SurveyInfo</th><th></th></tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="getAnswers().length == 0">
+            <td colspan="5">There are no answers</td>
+        </tr>
+        <ng-template ngFor let-o [ngForOf]="getAnswers()">
+            <tr *ngFor="let line of o.surveyInfo.lines">
+                <td>{{o.name}}</td><td>{{o.a1}}</td><td>{{o.a2}}</td><td>{{o.a3}}</td><td>{{o.a4}}</td><td>{{o.a5}}</td>
+                <td>{{line.survey.title}}</td>
+                <td>
+                    <button class="btn btn-warning m-1" (click)="markConfirmed(o)">
+                        Confirm
+                    </button>
+                    <button class="btn btn-danger" (click)="delete(o.id)">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+           
+        </ng-template>
+    </tbody>
+</table>

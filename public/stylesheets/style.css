@@ -1,0 +1,32 @@
+/*
+    File name: style.css
+    Student name: Yang Xuan
+    StudentID: 301186289
+    Date: Oct 15, 2022
+*/
+
+/*setting size for images*/
+#logo {
+    width: 30px;
+    height: 40px;
+}
+
+#photo {
+    height: 150px; 
+    width: 115px;
+}
+
+#gallery {
+    height: 120px; 
+    width: 200px;
+}
+
+#bugGame {
+    height: 120px;
+    width: 80px;
+}
+
+#joinForm {
+    height: 120px; 
+    width: 80px;
+}

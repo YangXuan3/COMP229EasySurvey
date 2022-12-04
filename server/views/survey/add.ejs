@@ -1,0 +1,101 @@
+<%-include ../partials/header.ejs%>
+<%-include ../partials/main_nav.ejs%>
+  
+<!--content for the Add page-->
+<div class = "container">
+    <div class = "row">
+        <div class="offset-md-3 col-md-6">
+        <h1><%= title %></h1>
+        <form class = "form" method="POST">
+                <div class ="form group">
+                    <label for="titleTextField">Survey Title</label>
+                    <input type="text" class="form control"
+                    id="titleTextField"
+                    placeholder="Enter the Survey Title"
+                    name="title" required>
+                </div>
+
+                <div class ="form group">
+                    <label for="typeTextField">Survey Type</label>
+                    <input type="text" class="form control"
+                    id="typeTextField"
+                    placeholder="Enter the Survey Type"
+                    name="type" required>
+                </div>
+
+                <div class ="form group">
+                    <label for="startDatetime">Survey Start Date</label>
+                    <input type="date" class="form control"
+                    id="startDatetime"
+                    placeholder="Enter the Survey Start Date"
+                    name="startdate"
+                    required>
+                </div>
+
+                <div class ="form group">
+                    <label for="endDatetime">Survey End Date</label>
+                    <input type="date" class="form control"
+                    id="endDatetime"
+                    placeholder="Enter the Survey End Date"
+                    name="enddate"
+                    required>
+                </div>
+
+                <div class ="form group">
+                    <label for="q1TextField">Survey Question 1</label>
+                    <input type="text" class="form control"
+                    id="q1TextField"
+                    placeholder="Enter the Question 1"
+                    name="q1" 
+                    required>
+                </div>
+
+                <div class ="form group">
+                    <label for="q2TextField">Survey Question 2</label>
+                    <input type="text" class="form contro2"
+                    id="q2TextField"
+                    placeholder="Enter the Question 2"
+                    name="q2" 
+                    required>
+                </div>
+
+                <div class ="form group">
+                    <label for="q3TextField">Survey Question 3</label>
+                    <input type="text" class="form control"
+                    id="q3TextField"
+                    placeholder="Enter the Question 3"
+                    name="q3" 
+                    required>
+                </div>
+
+                <div class ="form group">
+                    <label for="q4TextField">Survey Question 4</label>
+                    <input type="text" class="form control"
+                    id="q4TextField"
+                    placeholder="Enter the Question 4"
+                    name="q4" 
+                    required>
+                </div>
+
+                <div class ="form group">
+                    <label for="q5TextField">Survey Question 5</label>
+                    <input type="text" class="form control"
+                    id="q5TextField"
+                    placeholder="Enter the Question 5"
+                    name="q5" 
+                    required>
+                </div>
+
+                <button class = "btn btn-primary" type="submit"><i class = "fas fa-edit"></i>submit</button>
+                <a href="/survey" class="btn btn-warning"><i class="fas fa-undo"></i>cancel</a> 
+            
+        </form>
+        </div>
+        </div>
+    </div>
+
+
+  
+   <%-include ../partials/bottom_nav.ejs%>
+<%-include ../partials/footer.ejs%>   
+

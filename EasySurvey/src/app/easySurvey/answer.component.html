@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col bg-dark text-white">
+      <a class="navbar-brand">EASY SURVEY</a>
+    </div>
+  </div>
+</div>
+<div *ngIf="answerSent" class="m-2 text-center">
+  <h2>Thanks!</h2>
+  <p>Thanks for answering the survey.</p>
+  <p>We'll check your answers.</p>
+  <button class="btn btn-primary" routerLink="/store">Return to Easy Survey</button>
+</div>
+<form *ngIf="!answerSent" #form="ngForm" novalidate
+      (ngSubmit)="submitAnswer(form)" class="m-2">
+  <div class="form-group">
+    <label>Name</label>
+    <input class="form-control" #name="ngModel" name="name"
+            [(ngModel)]="answer.name" required />
+    <span *ngIf="submitted && name.invalid" class="text-danger">
+      Please enter your name
+    </span>
+  </div>
+  <div class="form-group">
+    <label>Question 1</label>
+    <input class="form-control" #address="ngModel" name="a1"
+            [(ngModel)]="answer.a1" required />
+    <!--span *ngIf="submitted && a1.invalid" class="text-danger">
+      Please enter your answer 1
+    </span-->
+  </div>
+  <div class="form-group">
+    <label>Question 2</label>
+    <input class="form-control" #address="ngModel" name="a2"
+            [(ngModel)]="answer.a2" required />
+    <!--span *ngIf="submitted && a2.invalid" class="text-danger">
+      Please enter your answer 2
+    </span-->
+  </div>
+  <div class="form-group">
+    <label>Question 3</label>
+    <input class="form-control" #address="ngModel" name="a3"
+            [(ngModel)]="answer.a3" required />
+    <!--span *ngIf="submitted && a3.invalid" class="text-danger">
+      Please enter your answer 3
+    </span-->
+  </div>
+  <div class="form-group">
+    <label>Question 4</label>
+    <input class="form-control" #address="ngModel" name="a4"
+            [(ngModel)]="answer.a4" required />
+    <!--span *ngIf="submitted && a4.invalid" class="text-danger">
+      Please enter your answer 4
+    </span-->
+  </div>
+  <div class="form-group">
+    <label>Question 5</label>
+    <input class="form-control" #address="ngModel" name="a5"
+            [(ngModel)]="answer.a5" required />
+    <!-- span *ngIf="submitted && a5.invalid" class="text-danger">
+      Please enter your answer 5
+    </span-->
+  </div>
+  <div class="text-center">
+    <button class="btn btn-secondary m-1" routerLink="/surveyInfo">Back</button>
+    <button class="btn btn-primary m-1" type="submit">Complete Answer</button>
+  </div>
+</form>
