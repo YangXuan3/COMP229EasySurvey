@@ -62,7 +62,7 @@ logout(): Observable<any>{
     this.user = null;
     localStorage.clear();
 
-    return this.http.get<any>(this.baseUrl + 'logout', this.getOptions());
+    return this.http.get<any>(this.baseUrl + 'logout', this.httpOptions);
 }
 loggedIn(): boolean
   {
@@ -70,12 +70,12 @@ loggedIn(): boolean
   }
 
 registerUser(user: User): Observable<any> {
-    return this.http.post<any>( this.baseUrl + 'register', user, this.getOptions());
+    return this.http.post<any>( this.baseUrl + 'register', user, this.httpOptions);
 }
 
 updateUser(user: User): Observable<any> {
     this.loadToken();
-    return this.http.post<any>( this.baseUrl + 'update', user, this.getOptions());
+    return this.http.post<any>( this.baseUrl + 'update', user, this.httpOptions);
 }
 
   // updates the headers with the bearer token
@@ -87,26 +87,26 @@ private loadToken(): void{
 
 saveSurvey(survey: Survey): Observable<Survey> {
   return this.http.post<Survey>(this.baseUrl + "survey",
-      survey, this.getOptions());
+      survey, this.httpOptions);
 }
 updateSurvey(survey: Survey): Observable<Survey> {
   return this.http.put<Survey>(`${this.baseUrl}survey/${survey.id}`,
-      survey, this.getOptions());
+      survey, this.httpOptions);
 }
 deleteSurvey(id: number): Observable<Survey> {
   return this.http.delete<Survey>(`${this.baseUrl}survey/${id}`,
-      this.getOptions());
+      this.httpOptions);
 }
 getAnswers(): Observable<Answer[]> {
-  return this.http.get<Answer[]>(this.baseUrl + "answers", this.getOptions());
+  return this.http.get<Answer[]>(this.baseUrl + "answers", this.httpOptions);
 }
 deleteAnswer(id: number): Observable<Answer> {
   return this.http.delete<Answer>(`${this.baseUrl}answers/${id}`,
-      this.getOptions());
+      this.httpOptions);
 }
 updateAnswer(answer: Answer): Observable<Answer> {
   return this.http.put<Answer>(`${this.baseUrl}answers/${answer.id}`,
-      answer, this.getOptions());
+      answer, this.httpOptions);
 }
 private getOptions() {
   return {
