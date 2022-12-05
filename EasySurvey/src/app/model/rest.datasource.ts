@@ -29,19 +29,19 @@ export class RestDataSource {
   constructor(private http: HttpClient,
               private jwtService: JwtHelperService) {
     this.user = new User();
-    //this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
+    //this.baseUrl = `${PROTOCOL}://${location.hostname}/`;
 
     this.baseUrl = `https://comp229004-f22-easysurvey.onrender.com/`;
   }
   getSurveys(): Observable<Survey[]> {
-    return this.http.get<Survey[]>(this.baseUrl + "surveys");
+    return this.http.get<Survey[]>(this.baseUrl + "survey/");
   }
   saveAnswer(answer: Answer): Observable<Answer> {
-    return this.http.post<Answer>(this.baseUrl + "answers", answer);
+    return this.http.post<Answer>(this.baseUrl + "answers/", answer);
   }
 
   authenticate(user: User): Observable<any> {
-    return this.http.post<any>(this.baseUrl + 'login', user, this.httpOptions);
+    return this.http.post<any>(this.baseUrl + 'login/', user, this.httpOptions);
   }
 
 
@@ -55,14 +55,14 @@ storeUserData(token: any, user: User): void{
 }
 
 getUsers(): Observable<User[]> {
-  return this.http.get<User[]>(this.baseUrl + "users");
+  return this.http.get<User[]>(this.baseUrl + "users/");
 }
 logout(): Observable<any>{
     this.auth_token = null;
     this.user = null;
     localStorage.clear();
 
-    return this.http.get<any>(this.baseUrl + 'logout', this.httpOptions);
+    return this.http.get<any>(this.baseUrl + 'logout/', this.httpOptions);
 }
 loggedIn(): boolean
   {
@@ -70,12 +70,12 @@ loggedIn(): boolean
   }
 
 registerUser(user: User): Observable<any> {
-    return this.http.post<any>( this.baseUrl + 'register', user, this.httpOptions);
+    return this.http.post<any>( this.baseUrl + 'register/', user, this.httpOptions);
 }
 
 updateUser(user: User): Observable<any> {
     this.loadToken();
-    return this.http.post<any>( this.baseUrl + 'update', user, this.httpOptions);
+    return this.http.post<any>( this.baseUrl + 'update/', user, this.httpOptions);
 }
 
   // updates the headers with the bearer token
@@ -86,26 +86,26 @@ private loadToken(): void{
 }
 
 saveSurvey(survey: Survey): Observable<Survey> {
-  return this.http.post<Survey>(this.baseUrl + "survey",
+  return this.http.post<Survey>(this.baseUrl + "survey/add",
       survey, this.httpOptions);
 }
 updateSurvey(survey: Survey): Observable<Survey> {
-  return this.http.put<Survey>(`${this.baseUrl}survey/${survey.id}`,
+  return this.http.put<Survey>(`${this.baseUrl}survey/update/${survey.id}/`,
       survey, this.httpOptions);
 }
 deleteSurvey(id: number): Observable<Survey> {
-  return this.http.delete<Survey>(`${this.baseUrl}survey/${id}`,
+  return this.http.delete<Survey>(`${this.baseUrl}survey/delete/${id}/`,
       this.httpOptions);
 }
 getAnswers(): Observable<Answer[]> {
-  return this.http.get<Answer[]>(this.baseUrl + "answers", this.httpOptions);
+  return this.http.get<Answer[]>(this.baseUrl + "answers/", this.httpOptions);
 }
 deleteAnswer(id: number): Observable<Answer> {
-  return this.http.delete<Answer>(`${this.baseUrl}answers/${id}`,
+  return this.http.delete<Answer>(`${this.baseUrl}answers/${id}/`,
       this.httpOptions);
 }
 updateAnswer(answer: Answer): Observable<Answer> {
-  return this.http.put<Answer>(`${this.baseUrl}answers/${answer.id}`,
+  return this.http.put<Answer>(`${this.baseUrl}answers/${answer.id}/`,
       answer, this.httpOptions);
 }
 private getOptions() {
