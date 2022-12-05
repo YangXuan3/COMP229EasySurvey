@@ -29,7 +29,9 @@ export class RestDataSource {
   constructor(private http: HttpClient,
               private jwtService: JwtHelperService) {
     this.user = new User();
-    this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
+    //this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
+
+    this.baseUrl = `https://comp229004-f22-easysurvey.onrender.com/`;
   }
   getSurveys(): Observable<Survey[]> {
     return this.http.get<Survey[]>(this.baseUrl + "surveys");
