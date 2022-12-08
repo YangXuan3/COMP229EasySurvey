@@ -32,5 +32,7 @@ router.post('/update/:id',requireAuth,surveyController.processUpdatePage);
 /*GET to perform Deletion - DELETE operation*/
 router.get('/delete/:id',requireAuth,surveyController.performDelete);
 
+//GET ROUTE for the survey page - READ OPERATION
+router.get('/get',surveyController.getSurvey);
 
 module.exports = router;

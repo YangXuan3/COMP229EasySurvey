@@ -24,13 +24,32 @@ module.exports.displaysurvey = (req,res,next)=>{
         }
     });
 }
+module.exports.getSurvey = (req,res,next)=>{
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    survey.find((err,survey)=>{
+        if(err)
+        {
+        return console.error(err);
+        }
+        else
+        {
+         //console.log(survey);
+         return res.end(JSON.stringify(survey));
+        }
+    });
+}
 
 module.exports.displayAddPage = (req,res,next)=>{
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.render('survey/add',{title:'Create survey', displayName: req.user ? req.user.displayName : ''});
 
 }
 
 module.exports.processAddPage = (req,res,next)=>{
+    res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     let newSurvey = survey({
         "title": req.body.title,
         "type":req.body.type,
@@ -74,6 +93,8 @@ module.exports.processAddPage = (req,res,next)=>{
             }
 
         module.exports.processUpdatePage = (req,res,next)=>{
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             let id = req.params.id
             console.log(req.body);
             let updatedsurvey = survey({
@@ -102,6 +123,8 @@ module.exports.processAddPage = (req,res,next)=>{
         }
 
         module.exports.performDelete= (req,res,next)=>{
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             let id = req.params.id;
             survey.remove({_id:id},(err)=>{
                 if(err)

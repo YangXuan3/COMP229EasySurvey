@@ -10,6 +10,8 @@ let mongoose = require('mongoose');
 let jwt = require('jsonwebtoken');
 let answer = require('../model/answer');
 module.exports.displayanswer = (req,res,next)=>{
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     answer.find((err,answer)=>{
         if(err)
         {
@@ -29,13 +31,15 @@ module.exports.displayAddPage = (req,res,next)=>{
 }
 
 module.exports.processAddPage = (req,res,next)=>{
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     let newAnswer = answer({
         "name": req.body.name,
-        "a1":req.body.q1,
-        "a2":req.body.q2,
-        "a3":req.body.q3,
-        "a4":req.body.q4,
-        "a5":req.body.q5,
+        "a1":req.body.a1,
+        "a2":req.body.a2,
+        "a3":req.body.a3,
+        "a4":req.body.a4,
+        "a5":req.body.a5,
         "confirmed":false
     });
     answer.create(newAnswer,(err,answer)=>{
@@ -52,6 +56,8 @@ module.exports.processAddPage = (req,res,next)=>{
     }
     
         module.exports.displayUpdatePage = (req,res,next)=>{
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             let id = req.params.id;
             answer.findById(id,(err,answerToEdit)=>{
                 if(err)
@@ -68,16 +74,18 @@ module.exports.processAddPage = (req,res,next)=>{
             }
 
         module.exports.processUpdatePage = (req,res,next)=>{
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             let id = req.params.id
             console.log(req.body);
             let updatedanswer = answer({
                 "_id":id,
                 "name": req.body.name,
-                "a1":req.body.q1,
-                "a2":req.body.q2,
-                "a3":req.body.q3,
-                "a4":req.body.q4,
-                "a5":req.body.q5,
+                "a1":req.body.a1,
+                "a2":req.body.a2,
+                "a3":req.body.a3,
+                "a4":req.body.a4,
+                "a5":req.body.a5,
                 "confirmed":false
             });
             answer.updateOne({_id:id}, updatedanswer,(err)=>{
@@ -94,6 +102,8 @@ module.exports.processAddPage = (req,res,next)=>{
         }
 
         module.exports.performDelete= (req,res,next)=>{
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             let id = req.params.id;
             answer.remove({_id:id},(err)=>{
                 if(err)

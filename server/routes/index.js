@@ -22,7 +22,8 @@ router.get('/register', indexController.displayRegisterPage);
 
 /* POST Route for processing the Register page */
 router.post('/register', indexController.processRegisterPage);
-
+/* POST Route for processing the Register page */
+router.post('/postregister', indexController.processRegister);
 /*GET to perform user logout */
 router.get('/logout',indexController.performLogout)
 module.exports = router;

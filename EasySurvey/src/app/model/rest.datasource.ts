@@ -9,6 +9,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from './user.model';
 
+
 const PROTOCOL = "http";
 const PORT = 3500;
 @Injectable()
@@ -22,22 +23,23 @@ export class RestDataSource {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
-    'Access-control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+    'Access-control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
     })
   };
 
   constructor(private http: HttpClient,
               private jwtService: JwtHelperService) {
     this.user = new User();
-    //this.baseUrl = `${PROTOCOL}://${location.hostname}/`;
+    this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
 
-    this.baseUrl = `https://comp229004-f22-easysurvey.onrender.com/`;
+    //this.baseUrl = `https://comp229004-f22-easysurvey.onrender.com/`;
   }
   getSurveys(): Observable<Survey[]> {
-    return this.http.get<Survey[]>(this.baseUrl + "survey/");
+    return this.http.get<Survey[]>(this.baseUrl + "survey/get");
   }
   saveAnswer(answer: Answer): Observable<Answer> {
-    return this.http.post<Answer>(this.baseUrl + "answers/", answer);
+    return this.http.post<Answer>(this.baseUrl + "answers/add", answer);
   }
 
   authenticate(user: User): Observable<any> {
@@ -70,12 +72,12 @@ loggedIn(): boolean
   }
 
 registerUser(user: User): Observable<any> {
-    return this.http.post<any>( this.baseUrl + 'register/', user, this.httpOptions);
+    return this.http.post<User>( this.baseUrl + 'processregister/', user, this.httpOptions);
 }
 
 updateUser(user: User): Observable<any> {
     this.loadToken();
-    return this.http.post<any>( this.baseUrl + 'update/', user, this.httpOptions);
+    return this.http.post<User>( this.baseUrl + 'update/', user, this.httpOptions);
 }
 
   // updates the headers with the bearer token

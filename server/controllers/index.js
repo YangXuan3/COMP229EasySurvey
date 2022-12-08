@@ -23,6 +23,8 @@ module.exports.displayHomePage = (req,res,next)=>{
 
 
 module.exports.displayLoginPage = (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     // check if the user is already logged in
     if(!req.user)
     {
@@ -40,6 +42,8 @@ module.exports.displayLoginPage = (req, res, next) => {
 }
 
 module.exports.processLoginPage = (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     passport.authenticate('local',
     (err, user, info) => {
         // server err?
@@ -83,6 +87,8 @@ module.exports.processLoginPage = (req, res, next) => {
     })(req, res, next);
 }
 module.exports.displayRegisterPage = (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     // check if the user is not already logged in
     if(!req.user)
     {
@@ -142,7 +148,32 @@ module.exports.processRegisterPage = (req, res, next) => {
         }
     });
 }
+
+module.exports.processRegister = (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    // instantiate a user object
+    let newUser = new User({
+        username: req.body.username,
+        //password: req.body.password
+        displayName: req.body.displayName
+    });
+
+    User.register(newUser, req.body.password, (err) => {
+        if (err) {
+            if (err.name == "UserExistsError") {  
+                //return res.json({success: false, msg: 'Username taken, please choose another username.'});
+            }
+            return res.end(JSON.stringify({success: false, msg: 'Error: failed to create user.'}));
+        } else {
+        // if no error exists, then registration is successful
+        return res.json({success: true, msg: 'User Registered Successfully!'});
+        }
+    });
+}
 module.exports.performLogout = (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     req.logout();
     res.redirect('/');
 }
