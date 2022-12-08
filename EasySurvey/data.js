@@ -11,7 +11,7 @@ module.exports = function () {
       ],
       answers: [],
       users:[
-        { id:"admin1",username:"admin",password:"123456",email:"a",displayName:"Admin",newPassword:"" }
+        { id:"admin1",username:"admin",password:"123456",displayName:"Admin",newPassword:"" }
       ]
   }
 }
