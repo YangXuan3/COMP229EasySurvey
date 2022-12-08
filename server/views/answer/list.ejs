@@ -1,0 +1,46 @@
+<%-include ../partials/header.ejs%>
+<%-include ../partials/main_nav.ejs%>
+  
+
+  
+ 
+   <p>Welcome to <%= title %></p>
+<main class="container">
+<div class="row">
+    <div class="col-md-offset-3 col md-8">
+        <h1><%= title %></h1>
+        <a href="/answer/add" class="btn btn-primary" role="button">
+            <i class ="fas fa-plus-circle"></i>Add a Answer</a>
+        <br>
+        <table class = "table table-bordered table-striped table-hover">
+            <tr>
+                <th class="text-content col-2">Name</th>
+                <th class="text-content col-2">a1</th>
+                <th class="text-content col-2">a2</th>
+                <th class="text-content col-2">a3</th>
+                <th class="text-content col-2">a4</th>
+                <th class="text-content col-2">a5</th>
+                <th class="text-content col-1"></th>
+                <th class="text-content col-1"></th>
+                </tr>
+           <% for(let count = 0; count<answer.length; count++){ %>
+            <tr>
+                <td class = "text-center col-2"><%=answer[count].name%></td>
+                <td class = "text-center col-2"><%=answer[count].a1%></td>
+                <td class = "text-center col-2"><%=answer[count].a2%></td>
+                <td class = "text-center col-2"><%=answer[count].a3%></td>
+                <td class = "text-center col-2"><%=answer[count].a4%></td>
+                <td class = "text-center col-2"><%=answer[count].a5%></td>
+                <td class ="text-center col-1"><a href="/answer/update/<%=answer[count]._id%>" class="btn btn-primary"><i class="fas fa-pencil-alt"></i>Update</a></td>
+                <td class ="text-center col-1"><a href="/answer/delete/<%=answer[count]._id%>" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</a></td>    
+            </tr>
+                <%}%>
+            </table>
+
+        </div>
+    </div>
+    </main>
+
+   <%-include ../partials/bottom_nav.ejs%>
+<%-include ../partials/footer.ejs%>   
+

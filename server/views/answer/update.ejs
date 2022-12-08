@@ -1,0 +1,82 @@
+<%-include ../partials/header.ejs%>
+<%-include ../partials/main_nav.ejs%>
+  
+<!--content for the Add page-->
+<div class = "container">
+    <div class = "row">
+        <div class ="offset-md-3 col-md-6">
+        <h1><%= title %></h1>
+        <form class = "form" method="POST">
+            <div class ="form group">
+                <label for="nameTextField">Name</label>
+                <input type="text" class="form control"
+                id="nameTextField"
+                placeholder="Enter the Name"
+                name="name"
+                value="<%=answer.name%>"
+                required>
+            </div>
+
+            <div class ="form group">
+                <label for="a1TextField">Survey Answer 1</label>
+                <input type="text" class="form control"
+                id="a1TextField"
+                placeholder="Enter the Answer 1"
+                name="a1" 
+                value="<%=answer.a1%>"
+                required>
+            </div>
+
+            <div class ="form group">
+                <label for="a2TextField">Survey Answer 2</label>
+                <input type="text" class="form contro2"
+                id="a2TextField"
+                placeholder="Enter the Answer 2"
+                name="a2" 
+                value="<%=answer.a2%>"
+                required>
+            </div>
+
+            <div class ="form group">
+                <label for="a3TextField">Survey Answer 3</label>
+                <input type="text" class="form control"
+                id="a3TextField"
+                placeholder="Enter the Answer 3"
+                name="a3" 
+                value="<%=answer.a3%>"
+                required>
+            </div>
+
+            <div class ="form group">
+                <label for="a4TextField">Survey Answer 4</label>
+                <input type="text" class="form control"
+                id="a4TextField"
+                placeholder="Enter the Answer 4"
+                name="a4" 
+                value="<%=answer.a4%>"
+                required>
+            </div>
+
+            <div class ="form group">
+                <label for="a5TextField">Survey Answer 5</label>
+                <input type="text" class="form control"
+                id="a5TextField"
+                placeholder="Enter the Answer 5"
+                name="a5" 
+                value="<%=answer.a5%>"
+                required>
+            </div>
+            
+            <button class = "btn btn-primary" type="submit"><i class ="fas fa-edit"></i>submit</button>
+            <a href='/answerContact' class="btn btn-warning"><i class="fas fa-undo"></i>cancel</a>  
+        
+        </form>
+        </div>
+        </div>
+    </div>
+
+
+  
+   <%-include ../partials/bottom_nav.ejs%>
+<%-include ../partials/footer.ejs%>   
+

@@ -31,4 +31,6 @@ router.get('/update/:id',requireAuth,surveyController.displayUpdatePage);
 router.post('/update/:id',requireAuth,surveyController.processUpdatePage);
 /*GET to perform Deletion - DELETE operation*/
 router.get('/delete/:id',requireAuth,surveyController.performDelete);
+
+
 module.exports = router;
