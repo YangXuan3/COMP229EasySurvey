@@ -54,6 +54,8 @@ module.exports.processAddPage = (req,res,next)=>{
     }
     
         module.exports.displayUpdatePage = (req,res,next)=>{
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             let id = req.params.id;
             survey.findById(id,(err,surveyToEdit)=>{
                 if(err)
