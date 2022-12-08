@@ -40,6 +40,7 @@ mongoDB.once('open', ()=>{
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
 let surveyRouter = require('../routes/survey');
+let answerRouter = require('../routes/answer');
 
 let app = express();
 
@@ -101,11 +102,12 @@ passport.use(strategy);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/survey', surveyRouter);
+app.use('/answer', answerRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  res. header("Access-Control-Allow-Origin", "*");
-  res. header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
   next(createError(404));
 });
 
