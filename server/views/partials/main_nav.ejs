@@ -21,6 +21,13 @@
                 <%}%>
               </li>
 
+              <% if (title =="Answers"){%>
+                <li class="nav-item">
+                  <%} else {%>
+                  <a class="nav-link active" aria-current="page" href="/answer"><i class="fas fa-answer"></i>Answers</a>
+                  <%}%>
+                </li>
+
             <% if(typeof displayName == 'string' && displayName) { %>
               <li class="navbar-text"><i class="fas fa-lg fa-user"></i> Welcome, <%= displayName %></li>
               <li class="nav-item"><a href="/logout" class="nav-link">
