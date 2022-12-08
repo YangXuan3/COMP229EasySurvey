@@ -10,6 +10,8 @@ let mongoose = require('mongoose');
 let jwt = require('jsonwebtoken');
 let survey = require('../model/survey');
 module.exports.displaysurvey = (req,res,next)=>{
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     survey.find((err,survey)=>{
         if(err)
         {
