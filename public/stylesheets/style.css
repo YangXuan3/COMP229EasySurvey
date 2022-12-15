@@ -29,6 +29,9 @@ body{
   height: 100vh;
 }
 
+table{color: rgb(250, 242, 242);}
+td{width: 140px;}
+
 .wrapper{
   position: absolute;
   top: 50%;
